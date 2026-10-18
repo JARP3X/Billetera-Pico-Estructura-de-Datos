@@ -1,0 +1,28 @@
+@startuml
+title Ciclo completo de una operacion
+start
+:Llega operacion (agencia / QR);
+:Validar monto, cuentas y codigo no duplicado;
+if (Valida?) then (no)
+  :Marcar Rechazada y registrar motivo;
+  stop
+endif
+:ENCOLAR en Cola de llegada (FIFO);
+:DESENCOLAR la siguiente operacion;
+if (Hay conectividad con la agencia?) then (si)
+  :Procesar abono (estado Procesada);
+  :INSERTAR en ABB por codigo;
+  :Agregar al historial (lista simple y doble);
+  :APILAR en Pila de reversas;
+else (no)
+  :Enviar a Lista circular de reintentos;
+  :Reintentar (Intentos = Intentos + 1);
+  if (Exito o Intentos >= 3?) then (exito)
+    :Procesar como arriba;
+  else (agotado)
+    :Estado Pendiente de sincronizar;
+    :Calcular ruta minima con el Grafo;
+  endif
+endif
+stop
+@enduml
