@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace BilleteraPico
 {
@@ -22,34 +15,36 @@ namespace BilleteraPico
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
-        private void btnslide_Click(object sender, EventArgs e)
+        private void BtnSlide_Click(object sender, EventArgs e)
         {
             if (MenuVertical.Width == 250)
             {
                 MenuVertical.Width = 70;
             }
             else
+            {
                 MenuVertical.Width = 250;
+            }
         }
 
-        private void iconoCerrar_Click(object sender, EventArgs e)
+        private void IconoCerrar_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-        private void iconoMaximizar_Click(object sender, EventArgs e)
+        private void IconoMaximizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
             iconoRestaurar.Visible = true;
             iconoMaximizar.Visible = false;
         }
-        private void iconoRestaurar_Click(object sender, EventArgs e)
+        private void IconoRestaurar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Normal;
             iconoRestaurar.Visible = false;
             iconoMaximizar.Visible = true;
         }
 
-        private void iconoMinimizar_Click(object sender, EventArgs e)
+        private void IconoMinimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
@@ -60,9 +55,27 @@ namespace BilleteraPico
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void AbrirFormInPanel(object Formhijo)
+        {
+            if (this.panelContenedor.Controls.Count > 0)
+                this.panelContenedor.Controls.RemoveAt(0);
+            Form fh = Formhijo as Form;
+            fh.TopLevel = false;
+            fh.Dock = DockStyle.Fill;
+            this.panelContenedor.Controls.Add(fh);
+            this.panelContenedor.Tag = fh;
+            fh.Show();
+        }
+        private void BtnRegistrarCliente_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new RegistroDeClientes());
+
+        }
+        private void PictureBox1_Click(object sender, EventArgs e)
         {
 
         }
+
+
     }
 }

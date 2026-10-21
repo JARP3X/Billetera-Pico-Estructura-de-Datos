@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace BilleteraPico
 {
-    public partial class Registros : Form
+    public partial class RegistroDeClientes : Form
     {
-        public Registros()
+        public RegistroDeClientes()
         {
             InitializeComponent();
         }

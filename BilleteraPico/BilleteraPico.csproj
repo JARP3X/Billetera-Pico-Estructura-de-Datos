@@ -56,11 +56,11 @@
     <Compile Include="Nodo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registros.cs">
+    <Compile Include="RegistroDeClientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Registros.Designer.cs">
-      <DependentUpon>Registros.cs</DependentUpon>
+    <Compile Include="RegistroDeClientes.Designer.cs">
+      <DependentUpon>RegistroDeClientes.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -74,8 +74,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Registros.resx">
-      <DependentUpon>Registros.cs</DependentUpon>
+    <EmbeddedResource Include="RegistroDeClientes.resx">
+      <DependentUpon>RegistroDeClientes.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="CicloOperacion.puml" />
     <None Include="Properties\Settings.settings">
